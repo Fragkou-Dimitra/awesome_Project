@@ -14,32 +14,35 @@ import {
 } from "react-native";
 
 
-const LoginUser: () => Node = () => {
+const LoginUser: () => Node = (props) => {
   const userAdmin={
     email: "dimitra@gmail.com",
     password: "1234"
   }
   const [users,setUsers]=useState({name:"",email:""})
   const [error,setError]=useState("")
- 
-  const Login=(user)=>{
-    if (user.email==userAdmin.email && user.password==userAdmin.password)
-    {console.log(user)
-    setUsers({
-      name: user.name,
-      email:user.email
-    })}
-   else console.log("user does not match")}
+
+
   const Logout=()=>{
     setUsers({name:"",email:""})
    console.log("Logout")}
   //const [email, setEmail] = useState("");
   //const [password, setPassword] = useState("");
   const [user,setUser]= useState({name:"",email:"",password:""})
+
+
   const submitHandler=()=>{
-   
-    Login(user);
+    if (user.email==userAdmin.email && user.password==userAdmin.password)
+    {
+      console.log(user)
+      props.changeLoginStatus(true)
+      setUsers({
+        name: user.name,
+        email:user.email
+      })}
+    else console.log("user does not match")
   }
+
   const handleChange=(details,value)=>{
     setUser({
       ...user,
@@ -47,12 +50,9 @@ const LoginUser: () => Node = () => {
     })
   }
   return (
-    
     <View style={styles.container}>
       <Image style={styles.image} source={require("../../images/user.png")} />
- 
       <StatusBar />
-
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -61,7 +61,6 @@ const LoginUser: () => Node = () => {
           onChangeText={(text) => handleChange("name",text)} value={user.name}
         />
       </View>
-     
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -70,7 +69,6 @@ const LoginUser: () => Node = () => {
           onChangeText={(text) => handleChange("email",text)} value={user.email}
         />
       </View>
- 
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -80,20 +78,16 @@ const LoginUser: () => Node = () => {
           onChangeText={(text) => handleChange("password",text)} value={user.password}
         />
       </View>
- 
       <TouchableOpacity>
         <Text style={styles.forgot_button}>Forgot Password?</Text>
       </TouchableOpacity>
- 
       <TouchableOpacity style={styles.loginBtn}  onPress={() =>submitHandler()}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
-     
     </View>
-    
   );
 }
- 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -101,35 +95,35 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
- 
+
   image: {
       width:80,
       height:80,
     marginBottom: 40,
   },
- 
+
   inputView: {
     backgroundColor: "#FFC0CB",
     borderRadius: 30,
     width: "70%",
     height: 45,
     marginBottom: 20,
- 
+
     alignItems: "center",
   },
- 
+
   TextInput: {
     height: 50,
     flex: 1,
     padding: 10,
     marginLeft: 20,
   },
- 
+
   forgot_button: {
     height: 30,
     marginBottom: 30,
   },
- 
+
   loginBtn: {
     width: "80%",
     borderRadius: 25,
