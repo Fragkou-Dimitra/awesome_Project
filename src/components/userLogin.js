@@ -63,9 +63,9 @@ const UserLogin: () => Node = props => {
       <NavigationContainer>
         <MyDrawer.Navigator
           drawerContent={props => <DrawerContent {...props} Logout={Logout} />}>
-          <MyDrawer.Screen name="LoginUser" component={LoginUser} />
           <MyDrawer.Screen name="Home" component={Home} />
           <MyDrawer.Screen name="Tasks" component={Tasks} />
+          <MyDrawer.Screen name="LoginUser" component={LoginUser} />
         </MyDrawer.Navigator>
       </NavigationContainer>
     </TasksContextProvider>
