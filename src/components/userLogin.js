@@ -18,10 +18,7 @@ import Tasks from '../containers/tasksToDo';
 import LoginUser from '../containers/login';
 const MyDrawer = createDrawerNavigator();
 const UserLogin: () => Node = props => {
-  // const [isLogin, setIsLogin] = useState(false);
-  // props.changeLoginStatus(true)
-  //console.log(changeLoginStatus)
-  //{props.changeLoginStatus(true)}
+  
   const [users, setUsers] = useState({name: '', email: ''});
 
   const Logout = () => {
