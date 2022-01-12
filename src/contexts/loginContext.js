@@ -1,10 +1,11 @@
 import React, {createContext, useState, useEffect} from 'react';
-import { Text, View } from "react-native";
-import LoginUser from "../containers/login";
+import {Text, View} from 'react-native';
+import UserLogin from '../components/userLogin';
+import LoginUser from '../containers/login';
 
 const AuthContext = createContext();
 
-const AuthProvider = ({children}) => {
+const AuthProvider = () => {
   const [auth, setAuthState] = useState([]);
   const [isLogin, setIsLogin] = useState(false);
   const [isLoading, setLoading] = useState(true);
@@ -24,20 +25,22 @@ const AuthProvider = ({children}) => {
     }
   };
 
-
   useEffect(() => {
-    if (isLogin===true) {
+    if (isLogin) {
       getAuthState();
     }
   }, [isLogin]);
 
-  const changeLoginStatus = (status) =>{
+  const changeLoginStatus = status => {
     setIsLogin(status);
-  }
+    console.log(status)
+  };
+  
+  
 
   return (
     <AuthContext.Provider value={{auth, setAuthState}}>
-      {isLogin ? children : <LoginUser changeLoginStatus={changeLoginStatus}/>}
+      {isLogin ?<UserLogin changeLoginStatus={changeLoginStatus} /> : <LoginUser changeLoginStatus={changeLoginStatus} />}
     </AuthContext.Provider>
   );
 };

@@ -29,20 +29,16 @@ import Article from '../components/article';
 import Footer from '../components/footer';
 import { TasksContext } from '../contexts/TasksContext';
 
-//import { createContext } from 'react'
-//const TasksContext = createContext({data,setData})
 
 
 const Home: () => Node = ({navigation}) => {
   const [data,setData] = useContext(TasksContext);
-    const queryClient = new QueryClient();
-    const [isLoading] = useState(false);
-   const isDarkMode = useColorScheme() === 'dark';
-   const backgroundStyle = {
-     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  const queryClient = new QueryClient();
+  const [isLoading] = useState(false);
+  const isDarkMode = useColorScheme() === 'dark';
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
    };
-
-  
     return (
       <SafeAreaView style={backgroundStyle,{flex:1}}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -53,14 +49,10 @@ const Home: () => Node = ({navigation}) => {
               <User />
              </QueryClientProvider>
             </View>
-           
-            
             <View style={styles.container}>
 				<Article />
 			</View>
-  
-   
-          <View style={{backgroundColor: isDarkMode ? Colors.black : Colors.white }}> 
+        <View style={{backgroundColor: isDarkMode ? Colors.black : Colors.white }}> 
           
           
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
