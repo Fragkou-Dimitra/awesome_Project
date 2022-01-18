@@ -13,10 +13,6 @@ import LoginUser from '../containers/login';
 const MyDrawer = createDrawerNavigator();
 
 const UserLogin: () => Node = props => {
-<<<<<<< HEAD
-=======
-  
->>>>>>> 101ba8d9a9515fbf3b036369362af058e1a24672
   const [users, setUsers] = useState({name: '', email: ''});
 
   const Logout = () => {
