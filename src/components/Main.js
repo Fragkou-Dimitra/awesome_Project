@@ -19,10 +19,10 @@ const Main = props => {
 
   const Logout = () => {
     const isLogout = () => {
+      setUsers({name: '', email: ''});
       {
         changeLoginStatus(false);
       }
-      setUsers({name: '', email: ''});
     };
     Alert.alert(
       'Sign out',
