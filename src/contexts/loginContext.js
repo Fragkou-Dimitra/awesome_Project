@@ -1,10 +1,10 @@
 import React, {createContext, useState, useEffect} from 'react';
-import UserLogin from '../components/userLogin';
 import LoginUser from '../containers/login';
+import Main from "../components/Main";
 
 const AuthContext = createContext();
 
-const AuthProvider = () => {
+const AuthProvider = ({children}) => {
   const [auth, setAuthState] = useState([]);
   const [isLogin, setIsLogin] = useState(false);
   const [isLoading, setLoading] = useState(true);
@@ -36,9 +36,9 @@ const AuthProvider = () => {
   };
 
   return (
-    <AuthContext.Provider value={{auth, setAuthState}}>
+    <AuthContext.Provider value={{auth, setAuthState, changeLoginStatus}}>
       {isLogin ? (
-        <UserLogin changeLoginStatus={changeLoginStatus} />
+        children
       ) : (
         <LoginUser changeLoginStatus={changeLoginStatus} />
       )}

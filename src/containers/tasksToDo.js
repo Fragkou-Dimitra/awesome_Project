@@ -26,7 +26,7 @@ const Tasks: () => Node = ({navigation}) => {
     setData(newItemArray);
   };
   return (
-    <ScrollView horizontal={false} style={{backgroundColor: 'plum'}}>
+    <View horizontal={false} style={{backgroundColor: 'plum', height: '100%'}}>
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Text style={[styles.sectionContainer, styles.sectionTitle]}>
           Task-list
@@ -81,7 +81,7 @@ const Tasks: () => Node = ({navigation}) => {
         </View>
       </View>
       <Footer />
-    </ScrollView>
+    </View>
   );
 };
 

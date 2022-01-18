@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useContext } from "react";
 import {Node, useState} from 'react';
 import {Alert} from 'react-native';
 import {TasksContextProvider} from '../contexts/TasksContext';
@@ -9,16 +9,18 @@ import DrawerContent from './drawer-navigator';
 import Home from '../containers/home';
 import Tasks from '../containers/tasksToDo';
 import LoginUser from '../containers/login';
+import { AuthContext } from "../contexts/loginContext";
 
 const MyDrawer = createDrawerNavigator();
 
-const UserLogin: () => Node = props => {
+const Main = props => {
   const [users, setUsers] = useState({name: '', email: ''});
+  const {changeLoginStatus} = useContext(AuthContext);
 
   const Logout = () => {
     const isLogout = () => {
       {
-        props.changeLoginStatus(false);
+        changeLoginStatus(false);
       }
       setUsers({name: '', email: ''});
     };
@@ -63,4 +65,4 @@ const UserLogin: () => Node = props => {
   );
 };
 
-export default UserLogin;
+export default Main;

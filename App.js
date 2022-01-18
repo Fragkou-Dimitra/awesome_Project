@@ -8,13 +8,13 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import type {Node} from 'react';
-import LoginUser from './src/containers/login';
 import {AuthProvider} from './src/contexts/loginContext';
+import Main from "./src/components/Main";
 
 const App: () => Node = () => {
   return (
     <AuthProvider>
-      <LoginUser />
+      <Main />
     </AuthProvider>
   );
 };

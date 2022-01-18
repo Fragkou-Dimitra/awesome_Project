@@ -63,7 +63,7 @@ const Home: () => Node = ({navigation}) => {
             <User />
           </QueryClientProvider>
         </View>
-        <View style={styles.container}></View>
+        <View style={styles.container} />
         <View>
           <View>
             <Text
@@ -87,14 +87,9 @@ const Home: () => Node = ({navigation}) => {
               {isLoading ? (
                 <ActivityIndicator />
               ) : (
-                <FlatList
-                  scrollEnabled={true}
-                  nestedScrollEnabled={true}
-                  style={styles.flatListContainer}
-                  data={tasksDone}
-                  keyExtractor={({id}) => id}
-                  renderItem={({item, index}) => (
-                    <Text>
+                <View style={styles.flatListContainer}>{
+                  tasksDone.map(item => (
+                    <View>
                       {item.status === 'done' && (
                         <View style={styles.row}>
                           <Text>
@@ -109,10 +104,10 @@ const Home: () => Node = ({navigation}) => {
                           </View>
                         </View>
                       )}
-                    </Text>
-                  )}
-                  ListEmptyComponent={handleEmpty}
-                />
+                    </View>
+                  ))
+                }
+                </View>
               )}
             </View>
           </View>
@@ -133,13 +128,15 @@ const Home: () => Node = ({navigation}) => {
             subtitle="Eric Arthur does not have much time for hobbies - he spends most weekends driving all over Ghana collecting broken mobile phones."
             image="https://ichef.bbci.co.uk/news/976/cpsprodpb/109E3/production/_121476086_whatsappimage2021-11-08at10.55.43.jpg"
             article="From his home in Cape Coast he can rove more than 100 miles (160km) in one weekend visiting repair shops and scraps yards - anywhere that has a decent supply of broken devices. In a good weekend he can collect 400 of them. On top of that, he manages a team of six agents doing the same thing in other parts of the country, and between them they expect to collect around 30,000 phones this year."
-            linkTo="https://w<ww.bbc.com/news/business-59161682"></SectionNews>
+            linkTo="https://w<ww.bbc.com/news/business-59161682"
+          />
           <SectionNews
             title="Myanmar coup: The women abused and tortured in detention"
             subtitle="Women in Myanmar have been tortured, sexually harassed and threatened with rape in custody, according to accounts obtained by the BBC."
             image="https://ichef.bbci.co.uk/news/976/cpsprodpb/9908/production/_121867193_image005.jpg"
             article="Five women who were detained for protesting against a military coup in the country earlier this year say they were abused and tortured in the detention system after their arrests. Their names have been changed in the following accounts to protect their safety. Warning: this piece contains disturbing descriptions of abuse. Since Myanmars military seized power in February, protests have swept across the country - and women have played a prominent role in the resistance movement. "
-            linkTo="https://www.bbc.com/news/world-asia-59462503"></SectionNews>
+            linkTo="https://www.bbc.com/news/world-asia-59462503"
+          />
           <Footer />
         </View>
       </ScrollView>
