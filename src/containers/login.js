@@ -8,6 +8,7 @@ import {
   StatusBar,
   ScrollView,
   Button,
+  ImageBackground,
   Alert,
   TouchableOpacity,
 } from 'react-native';
@@ -44,42 +45,49 @@ const LoginUser = (props): Node => {
   };
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={require('../../images/user.png')} />
       <StatusBar />
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Name"
-          placeholderTextColor="#003f5c"
-          onChangeText={text => handleChange('name', text)}
-          value={user.name}
-        />
-      </View>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Email"
-          placeholderTextColor="#003f5c"
-          onChangeText={text => handleChange('email', text)}
-          value={user.email}
-        />
-      </View>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Password"
-          placeholderTextColor="#003f5c"
-          secureTextEntry={true}
-          onChangeText={text => handleChange('password', text)}
-          value={user.password}
-        />
-      </View>
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.loginBtn} onPress={() => submitHandler()}>
-        <Text style={styles.loginText}>LOGIN</Text>
-      </TouchableOpacity>
+      <ImageBackground
+        source={require('../../images/background.png')}
+        style={styles.imageBk}>
+        <Image style={styles.image} source={require('../../images/user.png')} />
+
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Name"
+            placeholderTextColor="#003f5c"
+            onChangeText={text => handleChange('name', text)}
+            value={user.name}
+          />
+        </View>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Email"
+            placeholderTextColor="#003f5c"
+            onChangeText={text => handleChange('email', text)}
+            value={user.email}
+          />
+        </View>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Password"
+            placeholderTextColor="#003f5c"
+            secureTextEntry={true}
+            onChangeText={text => handleChange('password', text)}
+            value={user.password}
+          />
+        </View>
+        <TouchableOpacity>
+          <Text style={styles.forgot_button}>Forgot Password?</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.loginBtn}
+          onPress={() => submitHandler()}>
+          <Text style={styles.loginText}>LOGIN</Text>
+        </TouchableOpacity>
+      </ImageBackground>
     </View>
   );
 };
@@ -90,6 +98,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  imageBk: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 400,
   },
 
   image: {

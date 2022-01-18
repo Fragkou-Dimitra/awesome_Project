@@ -1,5 +1,4 @@
 import React, {createContext, useState, useEffect} from 'react';
-import {Text, View} from 'react-native';
 import UserLogin from '../components/userLogin';
 import LoginUser from '../containers/login';
 
@@ -33,14 +32,16 @@ const AuthProvider = () => {
 
   const changeLoginStatus = status => {
     setIsLogin(status);
-    console.log(status)
+    console.log(status);
   };
-  
-  
 
   return (
     <AuthContext.Provider value={{auth, setAuthState}}>
-      {isLogin ?<UserLogin changeLoginStatus={changeLoginStatus} /> : <LoginUser changeLoginStatus={changeLoginStatus} />}
+      {isLogin ? (
+        <UserLogin changeLoginStatus={changeLoginStatus} />
+      ) : (
+        <LoginUser changeLoginStatus={changeLoginStatus} />
+      )}
     </AuthContext.Provider>
   );
 };

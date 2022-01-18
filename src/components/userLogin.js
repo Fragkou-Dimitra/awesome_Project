@@ -1,14 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Node, useState} from 'react';
-import {
-  SafeAreaView,
-  View,
-  TouchableOpacity,
-  Linking,
-  Alert,
-} from 'react-native';
+import {Alert} from 'react-native';
 import {TasksContextProvider} from '../contexts/TasksContext';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
@@ -16,12 +9,10 @@ import DrawerContent from './drawer-navigator';
 import Home from '../containers/home';
 import Tasks from '../containers/tasksToDo';
 import LoginUser from '../containers/login';
+
 const MyDrawer = createDrawerNavigator();
+
 const UserLogin: () => Node = props => {
-  // const [isLogin, setIsLogin] = useState(false);
-  // props.changeLoginStatus(true)
-  //console.log(changeLoginStatus)
-  //{props.changeLoginStatus(true)}
   const [users, setUsers] = useState({name: '', email: ''});
 
   const Logout = () => {
@@ -63,9 +54,9 @@ const UserLogin: () => Node = props => {
       <NavigationContainer>
         <MyDrawer.Navigator
           drawerContent={props => <DrawerContent {...props} Logout={Logout} />}>
-          <MyDrawer.Screen name="LoginUser" component={LoginUser} />
           <MyDrawer.Screen name="Home" component={Home} />
           <MyDrawer.Screen name="Tasks" component={Tasks} />
+          <MyDrawer.Screen name="LoginUser" component={LoginUser} />
         </MyDrawer.Navigator>
       </NavigationContainer>
     </TasksContextProvider>

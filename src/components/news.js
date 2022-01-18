@@ -9,19 +9,13 @@ import {
   Linking,
   StyleSheet,
 } from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const SectionNews = ({title, subtitle, image, article, linkTo}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
       <Text style={[styles.sectionTitle, {color: 'red'}]}>{title}</Text>
       <Text>{subtitle}</Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {color: isDarkMode ? Colors.light : Colors.dark},
-        ]}>
+      <Text style={[styles.sectionDescription]}>
         <View style={{width: 300, flex: 1, flexDirection: 'row'}}>
           <Image
             style={{height: 100, width: 100, marginRight: 10}}

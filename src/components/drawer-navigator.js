@@ -1,11 +1,9 @@
 import 'react-native-gesture-handler';
-import React, {useState} from 'react';
+import React from 'react';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import type {Node} from 'react';
-import {View, StyleSheet, Alert} from 'react-native';
-import {AuthContext, AuthProvider} from '../contexts/loginContext';
-import LoginUser from '../containers/login';
+import {View, StyleSheet} from 'react-native';
 
 const DrawerContent = (props): Node => {
   return (
@@ -43,7 +41,10 @@ const DrawerContent = (props): Node => {
             )}
             label="Logout"
             onPress={() => {
-              props.Logout(), props.navigation.navigate('LoginUser');
+              props.Logout(),
+                props.text === 'Ok'
+                  ? props.navigation.navigate('LoginUser')
+                  : props.navigation.navigate('Home');
             }}
           />
         </View>
