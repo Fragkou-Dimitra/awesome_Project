@@ -41,10 +41,14 @@ const DrawerContent = (props): Node => {
             )}
             label="Logout"
             onPress={() => {
+<<<<<<< HEAD
               props.Logout(),
                 props.text === 'Ok'
                   ? props.navigation.navigate('LoginUser')
                   : props.navigation.navigate('Home');
+=======
+              props.Logout(), (props.text==="Ok")?props.navigation.navigate('LoginUser'):props.navigation.navigate('Home');
+>>>>>>> 101ba8d9a9515fbf3b036369362af058e1a24672
             }}
           />
         </View>
